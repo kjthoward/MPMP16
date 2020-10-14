@@ -23,7 +23,6 @@ def pascals_triangle(rows):
     for count in range(rows):
         row = []
         for element in range(count + 1):
-
             row.append(combination(count, element))
         result.append(row)
     return result
@@ -32,15 +31,15 @@ def pascals_triangle(rows):
 odd_percentage={}
 
 #change number of rows as needed
-for row in pascals_triangle(1000):
+for row in pascals_triangle(128):
     odds_in_row=0
     for n in row:
         if is_odd(n)==True:
             odd_count+=1
             odds_in_row+=1
         total+=1
-    print(odds_in_row/len(row)*100)
-    odd_percentage[len(row)]=odds_in_row
+    print(f"Row: {len(row)} - {odds_in_row/len(row)*100}")
+    odd_percentage[len(row)]=odds_in_row/len(row)*100
     # print(row)
 pyplot.figure(figsize=(20,10))
 pyplot.title("Percentage of each row in Pascal's Triangle that's odd",fontsize=18)
@@ -48,5 +47,4 @@ pyplot.xlabel("Row Number")
 pyplot.ylabel("Percentage Odd")
 pyplot.plot([x for x in odd_percentage.keys()], [x for x in odd_percentage.values()])
 pyplot.show()
-print(f"{(odd_count/total)*100}%")
 
